@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { isNil, isNumber, toString } from 'lodash';
 import numeral from 'numeral';
+import classnames from 'classnames';
 
 const propTypes = {
+  className: PropTypes.string,
   min: PropTypes.number,
   max: PropTypes.number,
   value: PropTypes.number,
@@ -72,10 +74,14 @@ class NumericTextboxComponent extends React.Component {
     this.focused = false;
     this.numericRegex = null;
     this.numericInput = null;
-    this.value = null; // value in number
+    this.value = this.props.value;
     this.state = {
       value: ''
     };
+  }
+
+  componentDidMount() {
+    this.setInputValue();
   }
 
   componentDidUpdate(prevProps) {
@@ -102,13 +108,13 @@ class NumericTextboxComponent extends React.Component {
   }
 
   render() {
-    const { placeholder, disabled } = this.props;
+    const { placeholder, disabled, className } = this.props;
     const { value } = this.state;
     return (
       <input
         ref={(element) => this.numericInput = element}
         type="text"
-        className="form-control"
+        className={classnames('form-control', className)}
         value={value}
         placeholder={placeholder}
         disabled={disabled}

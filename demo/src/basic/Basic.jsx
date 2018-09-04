@@ -186,6 +186,7 @@ class Basic extends React.Component {
           <div className="form-group">
             <form>
               <NumericTextboxComponent
+                className="test"
                 name="currency"
                 min={minNumber}
                 max={maxNumber}
