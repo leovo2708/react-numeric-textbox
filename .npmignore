@@ -1,8 +1,0 @@
-src
-demo
-node_modules
-.babelrc
-.gitignore
-.editorconfig
-package-lock.json
-webpack.config.js
