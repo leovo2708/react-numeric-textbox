@@ -125,17 +125,6 @@ class Basic extends React.Component {
                   Auto correct
                 </label>
               </div>
-              {/* <div className="form-check form-check-inline">
-                <label className="form-check-label">
-                  <input
-                    type="checkbox"
-                    checked={rangeValidation}
-                    onChange={() => this.setState({ rangeValidation: !rangeValidation })}
-                    className="form-check-input"
-                  />
-                  Range validation
-                </label>
-              </div> */}
             </div>
           </div>
           <div className="form-group row">
@@ -186,8 +175,8 @@ class Basic extends React.Component {
           <div className="form-group">
             <form>
               <NumericTextboxComponent
-                className="test"
                 name="currency"
+                className="form-control"
                 min={minNumber}
                 max={maxNumber}
                 disabled={disabled}

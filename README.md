@@ -7,9 +7,6 @@ An ReactJS numeric textbox component
 * [ReactJS](https://reactjs.org/)
 * [Lodash](https://lodash.com)
 * [Numeral](http://numeraljs.com)
-* [Bootstrap 4](http://getbootstrap.com/)
-
-You can customize CSS yourself to break down dependencies to Bootstrap.
 
 ## Demo
 
@@ -26,6 +23,7 @@ npm install react-numeric-textbox --save
 
 ```js
 <NumericTextboxComponent
+  className={className}
   min={min}
   max={max}
   disabled={disabled}

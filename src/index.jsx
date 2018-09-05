@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { isNil, isNumber, toString } from 'lodash';
 import numeral from 'numeral';
-import classnames from 'classnames';
 
 const propTypes = {
   className: PropTypes.string,
@@ -112,7 +111,7 @@ class NumericTextboxComponent extends React.Component {
       <input
         ref={(element) => this.numericInput = element}
         type="text"
-        className={classnames('form-control', className)}
+        className={className}
         value={value}
         placeholder={placeholder}
         disabled={disabled}
