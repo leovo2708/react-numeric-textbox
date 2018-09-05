@@ -14,12 +14,11 @@ const propTypes = {
   disabled: PropTypes.bool,
   format: PropTypes.string,
   autoCorrect: PropTypes.bool,
-  rangeValidation: PropTypes.bool,
   onChange: PropTypes.func,
-  focus: PropTypes.func,
-  blur: PropTypes.func,
-  enter: PropTypes.func,
-  escape: PropTypes.func
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  onEnter: PropTypes.func,
+  onEscape: PropTypes.func
 };
 
 const defaultProps = {
@@ -28,8 +27,7 @@ const defaultProps = {
   decimals: 2,
   disabled: false,
   format: '0,0.00',
-  autoCorrect: false,
-  rangeValidation: true
+  autoCorrect: false
 };
 
 const keyCodes = {
@@ -159,9 +157,9 @@ class NumericTextboxComponent extends React.Component {
       });
     }
 
-    const { focus } = this.props;
-    if (focus) {
-      focus();
+    const { onFocus } = this.props;
+    if (onFocus) {
+      onFocus();
     }
   }
 
@@ -171,14 +169,14 @@ class NumericTextboxComponent extends React.Component {
       this.setInputValue();
     }
 
-    const { blur } = this.props;
-    if (blur) {
-      blur();
+    const { onBlur } = this.props;
+    if (onBlur) {
+      onBlur();
     }
   }
 
   handleKeyDown(event) {
-    const { disabled, enter, escape } = this.props;
+    const { disabled, onEnter, onEscape } = this.props;
     if (!disabled) {
       switch (event.which) {
         case keyCodes.down:
@@ -188,13 +186,13 @@ class NumericTextboxComponent extends React.Component {
           this.addStep(1);
           break;
         case keyCodes.enter:
-          if (enter) {
-            enter();
+          if (onEnter) {
+            onEnter();
           }
           break;
         case keyCodes.escape:
-          if (escape) {
-            escape();
+          if (onEscape) {
+            onEscape();
           }
           break;
       }
