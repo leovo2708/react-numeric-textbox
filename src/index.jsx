@@ -92,7 +92,7 @@ class NumericTextboxComponent extends React.Component {
       this.setInputValue();
     }
 
-    if (Helper.anyChanges(['value'], prevProps, this.props)) {
+    if (!this.focused && Helper.anyChanges(['value'], prevProps, this.props)) {
       const { value, autoCorrect } = this.props;
       let newValue = this.restrictDecimals(value);
       if (autoCorrect && this.limitValue(newValue) !== newValue) {
@@ -199,7 +199,11 @@ class NumericTextboxComponent extends React.Component {
   }
 
   verifySettings() {
-    const { min, max, decimals } = this.props;
+    const { min, max, decimals, value } = this.props;
+    if (value && !isNumber(value)) {
+      throw new Error('The value is not a valid number');
+    }
+
     if (isNumber(min) && isNumber(max) && min > max) {
       throw new Error('The max value should be bigger than the min value');
     }
@@ -273,6 +277,7 @@ class NumericTextboxComponent extends React.Component {
     if (isNil(value)) {
       value = this.value;
     }
+
     const inputValue = this.formatValue(value);
     if (inputValue !== this.state.value) {
       this.setState({ value: inputValue });
